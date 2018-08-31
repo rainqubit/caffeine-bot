@@ -14,14 +14,15 @@ class Utils {
     return withoutSpace;
   }
 
-  createEmbed(title, desc, footer, color) {
+  createEmbed(title, desc, footer, color, thumbnail = null) {
     // Create an embed with a title, description, optional footer and color
     let embed = new Discord.RichEmbed()
       .setTitle(title)
       .setColor(color)
 
-    if (desc != null) embed.setDescription(desc)
+    if (desc != null) embed.setDescription(desc);
     if (footer != null) embed.setFooter(footer);
+    if (thumbnail != null) embed.setThumbnail(thumbnail);
     return embed;
   }
 
