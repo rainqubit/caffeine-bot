@@ -5,10 +5,14 @@ const fs = require('fs');
 // Usage: !help
 function run(client, message, args) {
   if (args.length == 0) {
+
+    var modules = require("./modules.json");
+    modules = Object.keys(modules);
+
     // Display the entire documentation
     fs.readFile(__dirname + '/documentation/dependencies/help/message.md', function (err, data) {
       if (err) throw err;
-      message.channel.send(data.toString()).catch(console.error);  
+      message.channel.send(data.toString() + `\n\n${modules.map(m => `\`${m}\``).join(", ")}`).catch(console.error);  
     });
   }
   else if (args.length > 0) {
