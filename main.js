@@ -13,6 +13,9 @@ function setupBot() {
   client.config = config;
   client.commands = new Enmap();
 
+  // Perform config checks
+  verifyConfig(config);
+
   // Hook the event handlers
   hookHandlers();
 
@@ -23,8 +26,25 @@ function setupBot() {
   client.login(config.token);
 
   client.on('ready', () => {
-    client.user.setActivity('the sound of raindrops.', {type: 'LISTENING'});  
+    if (config.activityType && config.activityText) {
+      console.log(`Starting bot with activity '${client.utils.formattedActivity(config.activityType, config.activityText)}'`)
+      client.user.setActivity(config.activityText, {type: config.activityType});
+    } else {
+      console.log("Starting bot")
+    }
   })
+}
+
+function verifyConfig(config) {
+  if (config.activityType == "") {
+    // No activity type given
+    config.activityType = false;
+    config.activityText = false;
+  } else if (!(/listening|playing/g.test(config.activityType.toLowerCase()))) {
+    // Invalid config type, exit
+    console.log(`ERROR: Invalid activity type of '${config.activityType}'' given`);
+    process.exit(1);
+  }
 }
 
 function loadModules() {

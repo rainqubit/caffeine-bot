@@ -31,6 +31,17 @@ class Utils {
     return hasRole;
   }
 
+  formattedActivity(activityType, activityText) {
+    // Generate a human readable activity
+    activityType = activityType.toLowerCase();
+    if (activityType == "listening") {
+      return "Listening to " + activityText
+    } else {
+      activityType = activityType.charAt(0).toUpperCase() + activityType.substr(1);
+      return `${activityType} + ${activityText}`
+    }
+  }
+
 }
 
 module.exports = Utils;
