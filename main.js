@@ -1,11 +1,18 @@
 // Requires
 const Discord = require('discord.js');
 const Enmap = require('enmap');
+const chalk = require('chalk');
 const Utils = require('./utils.js');
 const fs = require('fs');
 
 let config = require('./config.json');
 let client = new Discord.Client();
+
+var emojiMap = {
+  success: "\u2705", // Green box tick
+  error: "\u274c", // Red cross
+  setupTask: "\u231B" // Hour glass
+}
 
 function setupBot() {
   client.utils = new Utils ();
@@ -27,10 +34,10 @@ function setupBot() {
 
   client.on('ready', () => {
     if (config.activityType && config.activityText) {
-      console.log(`Starting bot with activity '${client.utils.formattedActivity(config.activityType, config.activityText)}'`)
+      console.log(chalk.green(`\n${emojiMap.success} Starting bot with activity '${client.utils.formattedActivity(config.activityType, config.activityText)}'`))
       client.user.setActivity(config.activityText, {type: config.activityType});
     } else {
-      console.log("Starting bot")
+      console.log(chalk.green(`${emojiMap.success} Starting bot`));
     }
   })
 }
@@ -42,7 +49,7 @@ function verifyConfig(config) {
     config.activityText = false;
   } else if (!(/listening|playing/g.test(config.activityType.toLowerCase()))) {
     // Invalid config type, exit
-    console.log(`ERROR: Invalid activity type of '${config.activityType}'' given`);
+    console.log(chalk.red(`${emojiMap.error} Invalid activity type of '${config.activityType}'' given`));
     process.exit(1);
   }
 }
@@ -55,7 +62,7 @@ function loadModules() {
     let name = key, file = modules[key];
     let module = require(`./modules/${file}`);
     
-    console.log(`Loading module '${name}' from '${file}'`);
+    console.log(`${emojiMap.setupTask} Loading module '${name}' from '${file}'`);
     client.commands.set(name, module);
   });
 }
@@ -68,7 +75,7 @@ function hookHandlers() {
     let handle = key, file = handlers[key];
     let event = require(`./handlers/${file}`);
     
-    console.log(`Hooking handler for '${handle}' to '${file}'`);
+    console.log(`${emojiMap.setupTask} Hooking handler for '${handle}' to '${file}'`);
     client.on(handle, event.bind(null, client));
   });
 }
