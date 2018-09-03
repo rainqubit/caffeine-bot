@@ -1,4 +1,3 @@
-const Discord = require('discord.js');
 const fs = require('fs');
 
 // Displays help and documentation about how to use the bot.

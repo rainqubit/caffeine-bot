@@ -1,5 +1,3 @@
-
-
 // Adds a resource from the given link and posts it in #resources.
 // This operation is not automatically reversable, meaning a mod needs to remove.
 // Usage: !addresource <link>

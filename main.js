@@ -18,7 +18,9 @@ function setupBot() {
   loadModules();
 
   // Login to the Discord bot using the auth token
-  client.login(config.token);
+  client.login(config.token)
+    .then(() => console.log('Bot started successfully'))
+    .catch(console.error);
 
   client.on('ready', () => {
     client.user.setActivity('the sound of raindrops.', {type: 'LISTENING'});  
