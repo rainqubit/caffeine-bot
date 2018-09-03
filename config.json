@@ -2,6 +2,9 @@
   "prefix": "!",
   "token": "",
 
+  "activityText": "!help",
+  "activityType": "listening",
+
   "modRole": "Moderator",
   "adminRole": "Administrator"
 }

@@ -1,5 +1,6 @@
 {
   "help": "help.js",
   "reddit": "reddit.js",
-  "addresource": "addResource.js"
+  "addresource": "addResource.js",
+  "members": "members.js"
 }
