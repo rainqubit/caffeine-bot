@@ -2,10 +2,10 @@ const fs = require('fs');
 
 // Displays information about the linked subreddit.
 // Usage: !reddit
-function run(_, { message, args }) {
+function run(_, ctx) {
   fs.readFile(__dirname + '/documentation/reddit.md', function (err, data) {
     if (err) throw err;
-    message.channel.send(data.toString()).catch(console.error);
+    ctx.sendMessage(data.toString()).catch(console.error)
   });
 }
 
