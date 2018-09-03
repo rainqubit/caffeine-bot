@@ -9,6 +9,7 @@ function run(client, { message, args }) {
     `by ${message.author.tag}`, 0x00ff00);
 
   let channel = client.channels.find(c => c.name == "resources");
+  if(channel === null) return message.channel.send('Please add a resources channel.')
   channel.send({embed});
 }
 
