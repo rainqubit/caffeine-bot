@@ -3,8 +3,6 @@ const Discord = require('discord.js');
 const Enmap = require('enmap');
 const chalk = require('chalk');
 const Utils = require('./utils.js');
-const fs = require('fs');
-
 let config = require('./config.json');
 let client = new Discord.Client();
 
@@ -15,7 +13,7 @@ const emojiMap = {
 }
 
 function setupBot() {
-  client.utils = new Utils ();
+  client.utils = new Utils();
 
   client.config = config;
   client.commands = new Enmap();
@@ -30,14 +28,14 @@ function setupBot() {
   loadModules();
 
   // Login to the Discord bot using the auth token
-  client.login(config.token);
+  client.login(config.token)
+    .then(() => console.log(chalk.green(`${emojiMap.success} Started bot`)))
+    .catch(console.error);
 
   client.on('ready', () => {
     if (config.activityType && config.activityText) {
-      console.log(chalk.green(`\n${emojiMap.success} Starting bot with activity '${client.utils.formattedActivity(config.activityType, config.activityText)}'`))
       client.user.setActivity(config.activityText, {type: config.activityType});
-    } else {
-      console.log(chalk.green(`${emojiMap.success} Starting bot`));
+      console.log(chalk.green(`\n${emojiMap.success} Bot activity set as '${client.utils.formattedActivity(config.activityType, config.activityText)}'`));
     }
   })
 }
@@ -57,7 +55,7 @@ function verifyConfig(config) {
 function loadModules() {
   // Load the modules from the modules.json file
 
-  let modules = require('./modules/modules.json');
+  const modules = require('./modules/modules.json');
   Object.keys(modules).forEach(key => {
     let name = key, file = modules[key];
     let module = require(`./modules/${file}`);
@@ -70,7 +68,7 @@ function loadModules() {
 function hookHandlers() {
   // Hook the event
 
-  let handlers = require('./handlers/handlers.json');
+  const handlers = require('./handlers/handlers.json');
   Object.keys(handlers).forEach(key => {
     let handle = key, file = handlers[key];
     let event = require(`./handlers/${file}`);

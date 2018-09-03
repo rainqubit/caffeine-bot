@@ -2,10 +2,7 @@ const Discord = require('discord.js');
 const config = require('./config.json');
 
 class Utils {
-  // A collection of handy utilities
-  constructor() { 
-    
-  }
+
 
   noWhiteSpace(strings, ...placeholders) {
     // Build the string as normal, combining all the strings and placeholders
@@ -28,7 +25,7 @@ class Utils {
 
   isAdmin(user) {
     // Check if the user has "Administrator" or "Moderator" role
-    let hasRole = (user.roles.find(r => r.name == config.modRole || r.name == config.adminRole));
+    let hasRole = (user.roles.find(r => r.name === config.modRole || r.name === config.adminRole));
     return hasRole;
   }
 
