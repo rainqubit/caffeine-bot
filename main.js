@@ -2,13 +2,11 @@
 const Discord = require('discord.js');
 const Enmap = require('enmap');
 const Utils = require('./utils.js');
-const fs = require('fs');
-
 let config = require('./config.json');
 let client = new Discord.Client();
 
 function setupBot() {
-  client.utils = new Utils ();
+  client.utils = new Utils();
 
   client.config = config;
   client.commands = new Enmap();
@@ -30,7 +28,7 @@ function setupBot() {
 function loadModules() {
   // Load the modules from the modules.json file
 
-  let modules = require('./modules/modules.json');
+  const modules = require('./modules/modules.json');
   Object.keys(modules).forEach(key => {
     let name = key, file = modules[key];
     let module = require(`./modules/${file}`);
@@ -43,7 +41,7 @@ function loadModules() {
 function hookHandlers() {
   // Hook the event
 
-  let handlers = require('./handlers/handlers.json');
+  const handlers = require('./handlers/handlers.json');
   Object.keys(handlers).forEach(key => {
     let handle = key, file = handlers[key];
     let event = require(`./handlers/${file}`);
