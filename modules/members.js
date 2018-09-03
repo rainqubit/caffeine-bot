@@ -2,7 +2,7 @@ const Discord = require('discord.js');
 
 // Returns the member count of the server.
 // Usage: !members
-function run(client, message, args) {
+function run(client, message, _) {
   const embed = client.utils.createEmbed(
     message.guild.name,
     `Member count: ${message.guild.memberCount}`,

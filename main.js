@@ -29,15 +29,13 @@ function setupBot() {
 
   // Login to the Discord bot using the auth token
   client.login(config.token)
-    .then(() => console.log('Bot started successfully'))
+    .then(() => console.log(chalk.green(`${emojiMap.success} Started bot`)))
     .catch(console.error);
 
   client.on('ready', () => {
     if (config.activityType && config.activityText) {
-      console.log(chalk.green(`\n${emojiMap.success} Starting bot with activity '${client.utils.formattedActivity(config.activityType, config.activityText)}'`))
       client.user.setActivity(config.activityText, {type: config.activityType});
-    } else {
-      console.log(chalk.green(`${emojiMap.success} Starting bot`));
+      console.log(chalk.green(`\n${emojiMap.success} Bot activity set as '${client.utils.formattedActivity(config.activityType, config.activityText)}'`));
     }
   })
 }

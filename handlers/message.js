@@ -1,16 +1,16 @@
-const DiscordContext = require('discord-context')
-
 // Fired when a message is sent
 function handle(client, message, _) {
-  const context = new DiscordContext(message)
   if (message.author.bot) 
     return;
 
   if (message.content.startsWith(client.config.prefix)) {
     // The message is a command
-    const cmd = client.commands.get(context.command);
+    const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
+    const label = args.shift().toLowerCase();
+    const cmd = client.commands.get(label);
+
     if (!cmd) return;
-    cmd.run(client, context);
+    cmd.run(client, message, args);
   }
 }
 
