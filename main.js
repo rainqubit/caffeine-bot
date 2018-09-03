@@ -8,7 +8,7 @@ const fs = require('fs');
 let config = require('./config.json');
 let client = new Discord.Client();
 
-var emojiMap = {
+const emojiMap = {
   success: "\u2705", // Green box tick
   error: "\u274c", // Red cross
   setupTask: "\u231B" // Hour glass

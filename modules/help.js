@@ -6,7 +6,7 @@ const fs = require('fs');
 function run(client, message, args) {
   if (args.length == 0) {
 
-    var modules = require("./modules.json");
+    let modules = require("./modules.json");
     modules = Object.keys(modules);
 
     // Display the entire documentation
