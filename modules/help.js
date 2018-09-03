@@ -3,8 +3,8 @@ const fs = require('fs');
 
 // Displays help and documentation about how to use the bot.
 // Usage: !help
-function run(client, { message, args }) {
-  if (args.length == 0) {
+function run(_, { message, args }) {
+  if (args.slice(1).length == 0) {
     // Display the entire documentation
     fs.readFile(__dirname + '/documentation/help.md', function (err, data) {
       if (err) throw err;
