@@ -1,7 +1,7 @@
 const DiscordContext = require('discord-context')
 
 // Fired when a message is sent
-function handle(client, message, args) {
+function handle(client, message, _) {
   const context = new DiscordContext(message)
   if (message.author.bot) 
     return;
