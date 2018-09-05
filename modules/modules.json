@@ -2,5 +2,6 @@
   "help": "help.js",
   "reddit": "reddit.js",
   "addresource": "addResource.js",
-  "members": "members.js"
+  "members": "members.js",
+  "role": "role.js"
 }

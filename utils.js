@@ -40,6 +40,11 @@ class Utils {
     }
   }
 
+  error(error, channel) {
+    console.log(`ERROR: ${chalk.red(error)}`)
+    channel.send(`An error has occured, please contact an admin and prompt them to read the console.`)
+  }
+
 }
 
 module.exports = Utils;

@@ -2,6 +2,25 @@
   "prefix": "!",
   "token": "",
 
+  "assignableRoles": {
+    "roles": [
+      "Assembly",
+      "C",
+      "C++",
+      "Go",
+      "HTML/CSS",
+      "Java",
+      "JavaScript",
+      "Objective-C",
+      "Python",
+      "Ruby",
+      "Rust",
+      "Swift"
+    ],
+    "channel": "",
+    "sorted": true
+  },
+
   "activityText": "!help",
   "activityType": "listening",
 
