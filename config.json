@@ -2,6 +2,11 @@
   "prefix": "!",
   "token": "",
 
+  "greeting": {
+    "channel": "welcome",
+    "message": "%user, welcome to %server!"
+  },
+
   "assignableRoles": {
     "roles": [
       "Assembly",
