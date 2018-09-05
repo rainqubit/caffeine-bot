@@ -6,10 +6,10 @@ function run(client, message, args) {
   let embed = client.utils.createEmbed(`Resource added by ${message.author.tag} :books:`, resourceLink, 
     `by ${message.author.tag}`, 0x00ff00);
 
-  const resourcesChannel = client.channels.find(c => c.name == "resources");
+  const resourcesChannel = client.utils.findChannel(message.guild, "resources");
 
   if (resourcesChannel === null) return message.channel.send("**ERROR:** No resources channel found, please add one or disable in bot configuration").catch(console.error)
-  message.channel.send(`${message.author.toString()} Resource added to ${resourcesChannel.toString()}`)
+  message.channel.send(`${message.author.toString()}, resource added to ${resourcesChannel.toString()}`)
   resourcesChannel.send({embed});
 }
 

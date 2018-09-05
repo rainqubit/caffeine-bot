@@ -40,6 +40,38 @@ class Utils {
     }
   }
 
+  error(error, channel) {
+    console.log(`ERROR: ${chalk.red(error)}`)
+    channel.send(`An error has occured, please contact an admin and prompt them to read the console.`)
+  }
+
+  findChannel(guild, name) {
+    return guild.channels.find(c => c.name == name)
+  }
+
+  findRole(guild, name, caseSensitive = false) {
+    if (!caseSensitive) {
+      name = name.toLowerCase()
+    }
+
+    var role = guild.roles.find(item => {
+      if (!caseSensitive) item.name = item.name.toLowerCase()
+      return item.name == name
+    })
+
+    return role
+  }
+
+  saveNewConfig(config) {
+    return new Promise((resolve, reject) => {
+      config = JSON.stringify(config, null, 2);
+      fs.writeFile(__dirname + "/config.json", config, (err) => {
+        if (err) reject(err)
+        else resolve()
+      })
+    })
+  }
+
 }
 
 module.exports = Utils;
