@@ -24,17 +24,26 @@ function run(client, message, args) {
     return;
   }
 
+  if (config.assignableRoles.channel && config.assignableRoles.channel.length > 0) {
+    if (message.channel.name != config.assignableRoles.channel) {
+      const correctChannel = client.utils.findChannel(message.guild, config.assignableRoles.channel)
+      correctChannel.send(`${message.author.toString()}, please use this channel to assign roles`)
+      message.delete()
+      return;
+    }
+  }
+
   if (args.length < 1) {
     sendRoles(config, message)
   } else {
     if (config.assignableRoles.roles.map(item => item.toLowerCase()).includes(args[0].toLowerCase())) {
-      const roles = message.guild.roles.filter(item => item.name.toLowerCase() == args[0].toLowerCase())
-      if (Array.from(roles).length == 0) {
-        message.channel.send(`**ERROR:** The role \`${args[0]}\` doesn't exist on this server, please create the role or delete from this list using \`delrole\``)
-      } else {
-        const role = roles.values().next().value
-        message.member.addRole(role, "Self assigned")
+      const role = client.utils.findRole(message.guild, args[0])
+
+      if (role) {
+        message.member.addRole(role, "Self assigned via role command")
         message.channel.send(`${message.member.toString()}, I've added \`${role.name}\` to your role list`)
+      } else {
+        message.channel.send(`**ERROR:** The role \`${args[0]}\` doesn't exist on this server, please create the role or delete from this list using \`delrole\``)
       }
     } else {
       sendRoles(config, message)
