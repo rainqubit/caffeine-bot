@@ -7,10 +7,9 @@ function handle(client, message, _) {
     // The message is a command
     const args = message.content.slice(client.config.prefix.length).trim().split(/ +/g);
     const label = args.shift().toLowerCase();
-    const cmd = client.commands.get(label);
+    const command = client.commands[label];
 
-    if (!cmd) return;
-    cmd.run(client, message, args);
+    if (command) command.run(client, message, args)
   }
 }
 

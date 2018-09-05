@@ -1,6 +1,5 @@
 // Requires
 const Discord = require('discord.js');
-const Enmap = require('enmap');
 const chalk = require('chalk');
 const Utils = require('./utils.js');
 let config = require('./config.json');
@@ -16,7 +15,7 @@ function setupBot() {
   client.utils = new Utils();
 
   client.config = config;
-  client.commands = new Enmap();
+  client.commands = [];
 
   // Perform config checks
   verifyConfig(config);
@@ -61,7 +60,7 @@ function loadModules() {
     let module = require(`./modules/${file}`);
     
     console.log(`${emojiMap.setupTask} Loading module '${name}' from '${file}'`);
-    client.commands.set(name, module);
+    client.commands[name] = module;
   });
 }
 

@@ -1,5 +1,3 @@
-const Discord = require('discord.js');
-
 // Returns the member count of the server.
 // Usage: !members
 function run(client, message, _) {
