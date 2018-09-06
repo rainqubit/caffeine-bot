@@ -1,3 +1,4 @@
 {
-  "message": "message.js"
+  "message": "message.js",
+  "guildMemberAdd": "userJoin.js"
 }

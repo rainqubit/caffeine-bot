@@ -2,6 +2,33 @@
   "prefix": "!",
   "token": "",
 
+  "greeting": {
+    "channel": "welcome",
+    "message": "%user, welcome to %server!"
+  },
+
+  "assignableRoles": {
+    "roles": [
+      "Assembly",
+      "C",
+      "C++",
+      "Go",
+      "HTML/CSS",
+      "Java",
+      "JavaScript",
+      "Objective-C",
+      "Python",
+      "Ruby",
+      "Rust",
+      "Swift"
+    ],
+    "channel": "assign-roles",
+    "sorted": true
+  },
+
+  "activityText": "!help",
+  "activityType": "listening",
+
   "modRole": "Moderator",
   "adminRole": "Administrator"
 }
