@@ -7,6 +7,7 @@
   "license": "MIT",
   "dependencies": {
     "chalk": "^2.4.1",
-    "discord.js": "^11.4.2"
+    "discord.js": "^11.4.2",
+    "spamnya": "^1.0.0"
   }
 }
