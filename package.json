@@ -8,6 +8,6 @@
   "dependencies": {
     "chalk": "^2.4.1",
     "discord.js": "^11.4.2",
-    "spamnya": "^1.0.0"
+    "spamnya": "^1.1.1"
   }
 }
